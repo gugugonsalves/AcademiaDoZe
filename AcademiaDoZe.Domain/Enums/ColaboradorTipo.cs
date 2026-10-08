@@ -1,4 +1,4 @@
-﻿// Gustavo Gonsalves Branco
+﻿// Estevão Santos Ribeiro
 namespace AcademiaDoZe.Domain.Entities;
 
 public enum ColaboradorTipo

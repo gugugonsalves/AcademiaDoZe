@@ -1,4 +1,4 @@
-﻿// Gustavo Gonsalves Branco
+﻿// Estevão Santos Ribeiro
 using AcademiaDoZe.Domain.Common;
 using AcademiaDoZe.Domain.Enums;
 using AcademiaDoZe.Domain.Services;
