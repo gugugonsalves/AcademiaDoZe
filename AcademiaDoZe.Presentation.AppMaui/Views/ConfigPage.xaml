@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.ConfigPage"
+             Title="Configurações">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="16">
+            
+            <Border Style="{StaticResource CardBorder}" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Tema da Aplicação" Style="{StaticResource SubHeadline}" />
+                    <Label Text="Selecione a aparência de sua preferência:" FontSize="13" TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+                    
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10" Margin="0,4,0,0">
+                        <Border x:Name="BtnTemaClaro"
+                                Grid.Column="0"
+                                StrokeShape="RoundRectangle 10"
+                                HeightRequest="44"
+                                StrokeThickness="1"
+                                Padding="10,0">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTemaClaroClicked"/>
+                            </Border.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label x:Name="IconTemaClaro" Text="&#xe518;" FontFamily="MaterialIcons" FontSize="18" VerticalOptions="Center"/>
+                                <Label x:Name="LabelTemaClaro" Text="Claro" FontSize="13" FontAttributes="Bold" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Border>
+
+                        <Border x:Name="BtnTemaEscuro"
+                                Grid.Column="1"
+                                StrokeShape="RoundRectangle 10"
+                                HeightRequest="44"
+                                StrokeThickness="1"
+                                Padding="10,0">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTemaEscuroClicked"/>
+                            </Border.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label x:Name="IconTemaEscuro" Text="&#xe51c;" FontFamily="MaterialIcons" FontSize="18" VerticalOptions="Center"/>
+                                <Label x:Name="LabelTemaEscuro" Text="Escuro" FontSize="13" FontAttributes="Bold" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Border>
+
+                        <Border x:Name="BtnTemaSistema"
+                                Grid.Column="2"
+                                StrokeShape="RoundRectangle 10"
+                                HeightRequest="44"
+                                StrokeThickness="1"
+                                Padding="10,0">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTemaSistemaClicked"/>
+                            </Border.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label x:Name="IconTemaSistema" Text="&#xe30c;" FontFamily="MaterialIcons" FontSize="18" VerticalOptions="Center"/>
+                                <Label x:Name="LabelTemaSistema" Text="Sistema" FontSize="13" FontAttributes="Bold" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Credenciais do Banco" Style="{StaticResource SubHeadline}" />
+                    
+                    <Label Text="Tipo" FontSize="13" />
+                    <Border StrokeShape="RoundRectangle 8"
+                            Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource CardStrokeDark}}"
+                            StrokeThickness="1"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                            Padding="8,0">
+                        <Picker x:Name="TipoBancoPicker" VerticalOptions="Center">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Sqlite</x:String>
+                                    <x:String>SqlServer</x:String>
+                                    <x:String>MySql</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Border>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Servidor" FontSize="13"/>
+                            <Entry x:Name="ServidorEntry" Placeholder="127.0.0.1" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Banco" FontSize="13"/>
+                            <Entry x:Name="BancoEntry" Placeholder="db_academia_do_ze" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Usuário" FontSize="13"/>
+                            <Entry x:Name="UsuarioEntry" Placeholder="root" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Senha" FontSize="13"/>
+                            <Entry x:Name="SenhaEntry" IsPassword="True" Placeholder="••••••••" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Complemento" FontSize="13"/>
+                        <Entry x:Name="ComplementoEntry" Placeholder="Parâmetros adicionais da connection string..." />
+                    </VerticalStackLayout>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,0">
+                        <Button Grid.Column="0" Text="Cancelar" Clicked="OnCancelarClicked" Style="{StaticResource ButtonSecondary}" HeightRequest="44" />
+                        <Button Grid.Column="1" Text="Salvar BD" Clicked="OnSalvarBancoClicked" Style="{StaticResource ButtonPrimary}" HeightRequest="44" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
